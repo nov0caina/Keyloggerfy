@@ -1,0 +1,10 @@
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\bin\Debug\Keyloggerfy.exe.config
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\bin\Debug\Keyloggerfy.exe
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\bin\Debug\Keyloggerfy.pdb
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.csprojAssemblyReference.cache
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.main.resources
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.Properties.Resources.resources
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.csproj.GenerateResource.cache
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.csproj.CoreCompileInputs.cache
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.exe
+C:\Users\abelm\Documents\Projects\Keyloggerfy\Keyloggerfy\obj\Debug\Keyloggerfy.pdb

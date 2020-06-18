@@ -1,0 +1,10 @@
+Ingresar horario de captura y envio
+
+Ingresar servicio de correo
+Microsoft o Gmail
+Dependiendo la seleccion 
+se seteara el host y port
+
+Ingresar el correo destino 
+y finalmente el correo y contraseña
+fuente
