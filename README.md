@@ -2,15 +2,19 @@
 
 ## Keylogger with graphic interface and email support written in C#
 
-Currently it just supports Gmail "Mail from" adrress, have in mind that this gmail address must have "lesssecureapps" mode activated so Keyloggerfy can send emails, you can activate it in this link: https://www.google.com/settings/security/lesssecureapps
+It just supports Gmail "Mail from" adrress, have in mind that this gmail address must have "lesssecureapps" mode activated so Keyloggerfy can send emails, you can activate it in this link: https://www.google.com/settings/security/lesssecureapps
 
-I really suggest you to create dedicated email addresses for this application.
+I really suggest you to create dedicated gmail address for this application.
 
-The "email to" address can be from any email provider.
+If you use any other kind of email in the "Mail from" email address it won't work.
+
+The "Mail to" address can be from any email provider.
 
 
 
 ![alt tag](https://i.imgur.com/NTt2pQU.png)
+
+
 
 
 
